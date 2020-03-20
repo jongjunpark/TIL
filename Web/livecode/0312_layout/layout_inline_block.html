@@ -6,15 +6,24 @@
   <title>Document</title>
   <link rel="stylesheet" href="layout_template.css">
   <style>
-    nav,section{
+    nav, section {
       display: inline-block;
+    }
+    /* inline-block은 코드상의 공백으로 4px이 부여됨.
+    아래의 방법은 100% 안전한 방법은 아님. (일부 브라우저/폰트의 경우 4px이 아닙니다.)
+    소스코드를 </nav><section>으로 해도 되나, 코드 가독성이 떨어지는 단점이 있음.
+    혹은 부모요소(div)의 폰트사이즈를 0으로 설정하고, 자식요소(nav/section)의 폰트사이즈를 부여하는 방법도 존재.(실제 이러닝 코드의 풀이 방법)
+    다만, 이 방법도 부모 요소 영역에 다른 텍스트가 없을 때만 가능.
+    이러한 레이아웃을 만들 때 inline-block을 사용시 주의!
+     */
+    nav, section {
       margin-right: -4px;
     }
-    nav{
-      vertical-align: top;
+    div {
+      background-color: powderblue;
     }
-    div{
-      background: powderblue;
+    nav {
+      vertical-align: top;
     }
   </style>
 </head>
@@ -24,7 +33,7 @@
   </header>
   <div>
     <nav>
-      네비게이션 영역입니다.
+      네비게이션.
     </nav>
     <section>
       <article>
