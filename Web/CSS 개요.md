@@ -1,4 +1,4 @@
-![image-20200310111045359](C:\Users\Park\AppData\Roaming\Typora\typora-user-images\image-20200310111045359.png)
+![image-20200310111045359](CSS 개요.assets/image-20200310111045359.png)
 
 CSS 정의 방법
 
@@ -55,7 +55,7 @@ Box model
 
 - 구성
 
-  ![image-20200311021158524](C:\Users\Park\AppData\Roaming\Typora\typora-user-images\image-20200311021158524.png)
+  ![image-20200311021158524](CSS 개요.assets/image-20200311021158524.png)
 
   
 
@@ -73,7 +73,7 @@ Box model
 
   \<shorthand>
 
-  ![image-20200311021549988](C:\Users\Park\AppData\Roaming\Typora\typora-user-images\image-20200311021549988.png)
+  ![image-20200311021549988](CSS 개요.assets/image-20200311021549988.png)
 
   ​	- 전체설정						- 상하 / 좌우					 - 상/좌우/하 					- 상/하/좌/우
 
@@ -107,7 +107,7 @@ Box model
 
   A) 142px
 
-  ![image-20200311022338064](C:\Users\Park\AppData\Roaming\Typora\typora-user-images\image-20200311022338064.png)
+  ![image-20200311022338064](CSS 개요.assets/image-20200311022338064.png)
   - Content는 100px이지만 padding, border의 값이 더해져서 142px이 됨
   - 이를 해결하기 위해 `box-sizing`을 이용한다.
   - 기본적으로 `box-sizing`은 `content-box`이다. 그러나 일반적으로 boder 까지의 너비를 봄
@@ -118,7 +118,7 @@ Box model
 
   A) 3
 
-  ![image-20200311023108680](C:\Users\Park\AppData\Roaming\Typora\typora-user-images\image-20200311023108680.png)
+  ![image-20200311023108680](CSS 개요.assets/image-20200311023108680.png)
 
   - 마진 상쇄 : 인접 형제 요소간의 margin은 겹쳐져서 보인다.
 
@@ -162,7 +162,7 @@ Box model
 
   - 블록레벨의 경우 width를 가질 수 없는데 만약 실제 가질 수 있는 너비보다 작은 width를 지정한다면 나머지는 margin으로 채워진다. 그래서 꽉 채워지기 때문에 줄바꿈이 발생한다. 
 
-  ![image-20200311023920940](C:\Users\Park\AppData\Roaming\Typora\typora-user-images\image-20200311023920940.png)
+  ![image-20200311023920940](CSS 개요.assets/image-20200311023920940.png)
 
   ​	기본																				width = 100px을 주었을 때
 
