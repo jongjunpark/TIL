@@ -1,7 +1,3 @@
-import sys
-
-sys.stdin = open('input.txt', 'r')
-
 def min_manufacture(i, j, s):
     global min_rate
     if s >= min_rate:
@@ -26,4 +22,3 @@ for tc in range(1, int(input())+1):
     for j in range(N):
         min_manufacture(0, j, rate[0][j])
     print('#{} {}'.format(tc,min_rate))
-
