@@ -46,6 +46,13 @@
 const myName = 'Jongjun'
 ```
 
+- 일반적으로 상수는 Upper Case를 사용
+
+```javascript
+const GRAVITY_ACCEL = 9.8
+const NAVER_URL = 'http://www.naver.com'
+```
+
 
 
 ### Type of Data
@@ -119,3 +126,85 @@ function sayHello(argument) {
 }
 ```
 
+
+
+## DOM (Document Object Model)
+
+> JavaScript를 통해 HTML에 접근할 수 있다. (일반 홈페이지에서 console.log(document)를 해보자)
+
+- JavaScript는 Document를 통해 html의 모든 요소를 가지고 올 수 있다.
+- 그 후 선택된 것은 Object로 바꾼다.
+- select된 DOM을 console.dir() 해보자. 가능한 객체표기법들이 나온다. 그리고 그 것들을 수정할 수 있다!
+
+### 선택자
+
+> 원하는 DOM을 선택하기 위함
+
+- getElementById(#) : DOM에서 특정 id값을 가진 엘리멘트를 반환
+- getElementsByClassName(.) : 특정 클래스명을 가진 엘리멘트들을 NodeLIst로 반환
+- querySelector(css선택자) : 노드의 첫번째 자식을 반환
+
+
+
+### addEventListener
+
+> Event에 귀를 기울여 Event가 발생했을 때 취할 행동을 정의
+
+- 기본구조 : selectedDOM.addEventListener(**event**, **function**)
+- 주의할 점
+  - addEventListener("eventName", function1())의 경우는 event의 여부와 상관없이 function1을 바로 호출한다. 
+  - addEventListener("eventName", function1) 의 경우는 event가 적용될 때 function1을 호출한다.
+
+
+
+## HTMLElement
+
+**if (want replace) {**
+
+### className
+
+- class를 부여한다. 만약 이미 class가 있다면 부여한 class로 대체된다.
+
+- CSS에 class 선택자를 통해 style을 미리 만든 후 className을 줘서 디자인변경을 이룰 수 있다.
+
+**} else { **
+
+### classList
+
+- class를 List화 하여 여러개의 class를 다룬다.
+
+- add : List에 추가
+- remove : List에 제거
+- contains : 해당 value가 존재하는지 확인
+- toggle : 인자가 List 내에 true라면 remove, false라면 add 함
+
+**}**
+
+
+
+## 조건문 (if-else)
+
+생략
+
+
+
+## 참고
+
+### 도움되는 사이트
+
+- flatuicolors.com : 컬러값을 얻을 수 있는 사이트
+
+
+
+### 궁금한 것
+
+- Q1) 상수값은 Upper Case로 한다?
+
+- Q2) const는 변하지 않는 값??
+
+```javascript
+const title = document.querySelector("#name")
+const currentColor = title.style.color
+// click event를 통해 색을 바꾸는 경우 currentColor값이 변하는데 왜 에러가 안뜨는가?
+// 그리고 let이 있는데 const를 쓰는 이유가 있는가? 	
+```
