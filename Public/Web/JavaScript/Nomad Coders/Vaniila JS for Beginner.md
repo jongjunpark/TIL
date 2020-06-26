@@ -142,7 +142,16 @@ function sayHello(argument) {
 
 - getElementById(#) : DOM에서 특정 id값을 가진 엘리멘트를 반환
 - getElementsByClassName(.) : 특정 클래스명을 가진 엘리멘트들을 NodeLIst로 반환
-- querySelector(css선택자) : 노드의 첫번째 자식을 반환
+- querySelector(css선택자) : 노드의 자식 중 특정 선택자를 가진 첫번째 자식을 반환
+- querySelectorAll(css선택자) : 노드의 자식 중 특정 선택자를 가진 모든 자식을 array로 반환 
+
+
+
+### 엘리먼트 생성
+
+> HTML에 개입
+
+- crateElement("tagName") : tag를 생성한다.
 
 
 
@@ -154,6 +163,7 @@ function sayHello(argument) {
 - 주의할 점
   - addEventListener("eventName", function1())의 경우는 event의 여부와 상관없이 function1을 바로 호출한다. 
   - addEventListener("eventName", function1) 의 경우는 event가 적용될 때 function1을 호출한다.
+- event.preventDefault() : 해당 event의 default가 실행되지 않는다.
 
 
 
@@ -180,11 +190,77 @@ function sayHello(argument) {
 
 **}**
 
+### innerText
+
+- Text를 해당 tag에 삽입한다.
+
+
+
+### innerHTML
+
+
+
+### value
+
+- value값을 삽입한다.
+
+
+
+### appendChild(childName)
+
+- 자식요소를 추가한다.	
+
+```javascript
+li.appendChild(span)
+/* <li>
+	<span>
+   </li> */
+```
+
+
+
+
+
 
 
 ## 조건문 (if-else)
 
 생략
+
+### 삼항연산자
+
+- 구조 : `조건` ? `true일 때 실행할 것` : `false일 때 실행할 것`
+
+
+
+## 내부함수
+
+### Date
+
+> 현재 날짜정보
+
+- 구조 : new Date()
+
+- `.getHours`, `.getMinutes`, `.getSeconds` : 시, 분, 초
+- `.getFullYear`, `.getMonth`, `.getDate` : 연, 월, 일
+- `.getDay` : 요일 (1: Monday)
+
+
+
+### setInterval
+
+> timeout(millisecond)을 통해 시간간격을 두고 함수를 계속 실행
+
+- 구조 : setInterval(**function**, **timeout**)
+
+
+
+### localStorage
+
+> 로컬PC의 임시 저장소, 새로고침을 해도 남아있다.
+
+- `.setItem(key, value)` : key : value의 형태로 local storage에 담는다
+- `.getItem(key)` : 해당 key의 value값을 반환한다.
 
 
 
