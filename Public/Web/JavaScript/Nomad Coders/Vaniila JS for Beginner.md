@@ -136,42 +136,52 @@ function sayHello(argument) {
 - 그 후 선택된 것은 Object로 바꾼다.
 - select된 DOM을 console.dir() 해보자. 가능한 객체표기법들이 나온다. 그리고 그 것들을 수정할 수 있다!
 
+- 주요 객체
+  - window : DOM문서를 표현하는 창, 가장 최상위 객체로 다양한 함수, 이름공간, 객체 등이 포함 됨
+
+  - document : 페이지 콘텐츠의 진입점 역할, `<body>`등 다른 요소들을 포함
+
+  - navigator, location, history, screen
+
+    
+
 ### 선택자
 
 > 원하는 DOM을 선택하기 위함
 
-- getElementById(#) : DOM에서 특정 id값을 가진 엘리멘트를 반환
-- getElementsByClassName(.) : 특정 클래스명을 가진 엘리멘트들을 NodeLIst로 반환
-- querySelector(css선택자) : 노드의 자식 중 특정 선택자를 가진 첫번째 자식을 반환
-- querySelectorAll(css선택자) : 노드의 자식 중 특정 선택자를 가진 모든 자식을 array로 반환 
+- getElementById(id) : DOM에서 특정 id값을 가진 엘리멘트를 반환
+- getElementsByClassName(class) : 특정 클래스명을 가진 엘리멘트들을 NodeLIst로 반환
+- querySelector(selector) : 노드의 자식 중 특정 선택자를 가진 첫번째 자식을 반환
+- querySelectorAll(selector) : 노드의 자식 중 특정 선택자를 가진 모든 자식을 array로 반환 
 
 
 
 ### 엘리먼트 생성
 
-> HTML에 개입
+> Node 생성
 
 - crateElement("tagName") : tag를 생성한다.
 
+- parentNode.appendChild(childName) : 자식요소를 추가한다. (맨아래 자식으로)
+
+  ```javascript
+  li.appendChild(span)
+  /* <li>
+  	<span>
+     </li> */
+  ```
+
+- parentNode.removeChild(childName) : 자식요소에서 제거한다.
 
 
-### addEventListener
 
-> Event에 귀를 기울여 Event가 발생했을 때 취할 행동을 정의
+### HTMLElement
 
-- 기본구조 : selectedDOM.addEventListener(**event**, **function**)
-- 주의할 점
-  - addEventListener("eventName", function1())의 경우는 event의 여부와 상관없이 function1을 바로 호출한다. 
-  - addEventListener("eventName", function1) 의 경우는 event가 적용될 때 function1을 호출한다.
-- event.preventDefault() : 해당 event의 default가 실행되지 않는다.
-
-
-
-## HTMLElement
+> DOM 조작
 
 **if (want replace) {**
 
-### className
+#### className
 
 - class를 부여한다. 만약 이미 class가 있다면 부여한 class로 대체된다.
 
@@ -179,7 +189,7 @@ function sayHello(argument) {
 
 **} else { **
 
-### classList
+#### classList
 
 - class를 List화 하여 여러개의 class를 다룬다.
 
@@ -190,34 +200,42 @@ function sayHello(argument) {
 
 **}**
 
-### innerText
+#### innerText
 
-- Text를 해당 tag에 삽입한다.
-
-
-
-### innerHTML
+- Text를 삽입한다.
+- html 태그가 있다면 text 그대로 삽입된다.
 
 
 
-### value
+#### innerHTML
+
+- HTML로 파싱하여 값에 html 태그가 있다면 적용이 된다.
+- XSS 공격에 취약하여 보안상 문제가 있다.
+- \<br>을 통해 줄바꿈을 만들 수 있다.
+
+
+
+#### value
 
 - value값을 삽입한다.
 
+  
+
+#### style
+
+-  각종 style을 수정한다.
 
 
-### appendChild(childName)
 
-- 자식요소를 추가한다.	
+### addEventListener
 
-```javascript
-li.appendChild(span)
-/* <li>
-	<span>
-   </li> */
-```
+> Event에 귀를 기울여 Event가 발생했을 때 취할 행동을 정의
 
-
+- 기본구조 : selectedDOM.addEventListener(**event type**, **function**)
+- 주의할 점
+  - addEventListener("eventName", function1())의 경우는 event의 여부와 상관없이 function1을 바로 호출한다. 
+  - addEventListener("eventName", function1) 의 경우는 event가 적용될 때 function1을 호출한다.
+- event.preventDefault() : 해당 event의 default가 실행되지 않는다.
 
 
 
