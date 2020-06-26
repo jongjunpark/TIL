@@ -94,6 +94,7 @@ const what = 55.1;
 - key : value로 작성
 - 특정 key 값을 호출 할 때는 변수명 뒤에 `.`을 붙인다.
 - 호출을 한 후 값을 변경해줄 수 있다. (변수명이 const라도 상관없음, 물론 const의 값 형식을 바꾸는 것은 안됨)
+- 참고로 console도 object이다. 고로 console.log는 console이라는 object안의 key가 log인 것을 호출하는 것이다.
 
 ```javascript
 const myInfo = {
@@ -104,5 +105,17 @@ const myInfo = {
 }
 console.log(myInfo.age)
 myInfo.age = 31
+```
+
+
+
+## 함수 (Function)
+
+### 함수생성
+
+```javascript
+function sayHello(argument) {
+    return console.log('Hello', argument);
+}
 ```
 
