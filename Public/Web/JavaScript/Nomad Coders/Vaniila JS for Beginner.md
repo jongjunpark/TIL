@@ -156,13 +156,13 @@ function sayHello(argument) {
 
 
 
-### 엘리먼트 생성
+### 엘리먼트 생성 및 삭제
 
-> Node 생성
+>  Node 생성
 
 - crateElement("tagName") : tag를 생성한다.
 
-- parentNode.appendChild(childName) : 자식요소를 추가한다. (맨아래 자식으로)
+- parentNode.appendChild(childNode) : 자식요소를 추가한다. (맨아래 자식으로)
 
   ```javascript
   li.appendChild(span)
@@ -171,7 +171,7 @@ function sayHello(argument) {
      </li> */
   ```
 
-- parentNode.removeChild(childName) : 자식요소에서 제거한다.
+- childNode.removeChild(parentNode) : 자식요소에서 제거한다.
 
 
 
@@ -236,6 +236,8 @@ function sayHello(argument) {
   - addEventListener("eventName", function1())의 경우는 event의 여부와 상관없이 function1을 바로 호출한다. 
   - addEventListener("eventName", function1) 의 경우는 event가 적용될 때 function1을 호출한다.
 - event.preventDefault() : 해당 event의 default가 실행되지 않는다.
+- event.target : event를 전달한 객체에 대한 참조
+  - event.target.parentNode : event 전달 객체의 부모 노드 정보
 
 
 
@@ -275,10 +277,102 @@ function sayHello(argument) {
 
 ### localStorage
 
-> 로컬PC의 임시 저장소, 새로고침을 해도 남아있다.
+> 로컬PC의 임시 저장소, 새로고침을 해도 남아있다. string만 저장할 수 있으므로 주의하자.
 
-- `.setItem(key, value)` : key : value의 형태로 local storage에 담는다
+- `.setItem(key, value)` : key : value의 형태로 local storage에 담는다.
+  - value가 object라면 string형태로 변환해주는 `JSON.stringify`를 사용하자
 - `.getItem(key)` : 해당 key의 value값을 반환한다.
+
+
+
+### JSON.stringify
+
+> object -> string
+
+- 구조 : JSON.stringify(**object**)
+
+
+
+### JSON.parse
+
+> string -> object
+
+- 구조 : JSON.parse(**string**)
+
+
+
+### forEach
+
+> array 전용. array의 원소 각각에 한번씩 함수를 실행시킴
+
+- 구조 : arrayName.forEach(**function**)
+
+
+
+### filter
+
+> array 전용. array의 원소 각각에 한번씩 함수를 실행시킴 이 때, 함수를 통해 true를 반환하는 값만 따로 모아서 새로운 배열로 반환
+
+- 구조 : arrayName.filter(**function**)
+
+
+
+### parseInt, parseFloat, Number
+
+> string -> Int, Float
+
+- 구조 : parseInt(**string**), parseFloat(**string**), Number(**string**)
+
+- Number의 경우에는 문자로 되어있는 숫자의 type에 따라 정수형 또는 실수형으로 변환한다.
+
+
+
+### String
+
+> number -> string
+
+- 구조 : String(**num**)
+
+
+
+### Math
+
+#### .random
+
+> 0~1 사이의 숫자를 랜덤하게 반환
+
+- 구조 : Math.random()
+
+#### .floor
+
+> floor = 바닥으로 내림을 의미
+
+- 구조 : Math.floor(**num**)
+
+#### .ceil
+
+> ceilling = 천자으로 올림을 의미
+
+- 구조 : Math.ceil(**num**)
+
+
+
+### Image()
+
+> HTMLImageElement 생성
+
+- 구조 : new Image()
+- document.createElement("img") 와 같다.
+
+
+
+### Navigator
+
+#### .geolocation.getCurrentPosition
+
+> 현재 위치를 반환
+
+- 구조 : navigator.geolocation.getCurrentPosition(**success fn**, **fail fn**)
 
 
 
