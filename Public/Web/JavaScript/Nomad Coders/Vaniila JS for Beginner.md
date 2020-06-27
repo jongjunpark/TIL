@@ -109,9 +109,22 @@ const myInfo = {
     age: 30,
     isMale: true,
     fav: ['Game', 'Movie', 'Baseket Ball']
+    hi: hi,
+    sayHello: function() {
+        return 'Hello'
+    }
 }
 console.log(myInfo.age)
 myInfo.age = 31
+
+// ES6+
+const myInfo = {
+    //  key 문자열과 value의 변수명이 같을 때 단축 가능
+    hi,
+    sayHello() {
+        return 'Hello'
+    }
+}
 ```
 
 
