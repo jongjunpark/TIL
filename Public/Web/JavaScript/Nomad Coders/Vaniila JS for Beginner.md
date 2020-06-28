@@ -254,6 +254,53 @@ function sayHello(argument) {
 
 
 
+### Event type
+
+#### mousemove
+
+> mouse를 이동할 때
+
+- clientX,Y : window 기준 좌표
+- offsetX,Y : target 기준 좌표
+
+
+
+#### mousedown
+
+> mouse를 클릭할 때
+
+
+
+#### mouseup
+
+> mouse가 클릭된 상태에서 해소될 때
+
+
+
+#### mouseenter
+
+> mouse가 target에 들어왔을 때
+
+
+
+#### mouseleave
+
+> mouse가 target안에 있다가 벗어났을 때
+
+
+
+#### click
+
+> mouse 좌클릭
+
+
+
+#### contextmenu
+
+> mouse 우클릭 시 나오는 팝업(?)창
+
+- preventDefault를 이용하면 없앨 수 있다.
+
 
 
 ## 조건문 (if-else)
@@ -311,6 +358,14 @@ function sayHello(argument) {
 > string -> object
 
 - 구조 : JSON.parse(**string**)
+
+
+
+#### Array.from
+
+> iterable -> array
+
+- 구조 : Array.from(**iterable**)
 
 
 
@@ -394,6 +449,12 @@ function sayHello(argument) {
 ### 도움되는 사이트
 
 - flatuicolors.com : 컬러값을 얻을 수 있는 사이트
+
+
+
+### MDN
+
+- Canvas API : https://developer.mozilla.org/ko/docs/Web/HTML/Canvas
 
 
 
