@@ -1,9 +1,3 @@
-<<<<<<< HEAD
-def solution(n, t, m, timetable):
-    answer = ''
-    return answer
-
-=======
 def solution(board, moves):
     global answer
     answer = 0
@@ -32,10 +26,3 @@ def doll_catch(arr, moves, t, basket, f, s):
                 arr[i][moves[t]-1] = 0
             break
     doll_catch(arr, moves, t+1, basket, f, cnt)
-
-board = [[0,0,0,0,0],[0,0,1,0,3],[0,2,5,0,1],[4,2,4,4,2],[3,5,1,3,1]]
-moves = [1,5,3,5,1,2,1,4]
-solution(board, moves)
-            
-            
->>>>>>> 72c023f8232dc06b1a04f4dacd420b7782889602
