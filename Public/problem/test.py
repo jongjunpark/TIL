@@ -2,11 +2,15 @@ import sys
 
 sys.stdin = open('input.txt', 'r')
 
+N = int(input())
+signal = input()
 
-T = int(input())
-for tc in range(1, T+1):
-    n, m = map(int,input().split())
-    N = int(input())
-    dirt = [list(map(int,input().split())) for _ in range(N)]
-    
+S = [[0] * N for _ in range(N)]
+t = -1
 
+for i in range(N):
+    for j in range(i,N):
+        t += 1
+        S[i][j] = signal[t]
+
+# print(S)
