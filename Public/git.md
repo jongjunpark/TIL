@@ -11,9 +11,18 @@
 
 - Git으로 관리하고 싶은 폴더를 등록한다.
 
+## Option
+
+```bash
+1. 기본 : 현재 디렉토리를 git 저장소로 만듦
+git init
+```
 
 
-# 1. ADD
+
+
+
+# 1. Add
 
 ## 공식문서
 
@@ -48,7 +57,37 @@
 - 앞서 add를 통해 index에 관리하고 싶은 파일을 기록했을 것이다.
 - 그럼 commit을 통해 index에 담긴 정보를 내 컴퓨터에 저장을 한다.
 
+## Option
 
+```bash
+0. 모든파일
+git add .	// 현재 디렉토리의 모든 파일 대상
+git add -A	// 현재 디렉토리의 모든 파일 대상
+git add *	// 현재 디렉토리의 모든 파일 대상(.으로 시작하는 파일 제외 ex>.gitignore)
+git add -u	// 현재 디렉토리의 모든 파일 중 수정/삭제된 파일 대상
+
+1. 파일단위
+git add <file>
+> git add test.py	// 파일이름 직접 지정
+> git add *.py		// 확장자 지정
+
+2. 폴더단위
+git add <directory>
+> git add ./01_python/	// 폴더이름 직접 지정
+
+3. 파일+폴더
+git add <directory><file>
+> git add Documentation/\*.txt
+
+4. 대화식모드
+// 수정파일 대상으로, 수정된 부분을 git에서 hunk 단위로 나누어준다. 
+// 각 hunk를 통해 변경사항을 보여주고 hunk를 기준으로 add 여부를 체크한다.
+git add -p
+```
+
+![image-20200712212629114](git.assets/image-20200712212629114.png)
+
+![image-20200712213844572](git.assets/image-20200712213844572.png)
 
 # 3. Push
 
@@ -59,5 +98,7 @@
 ## 쉽게
 
 - push는 전달이다.
-- 마지막 commit을 기준으로 내 컴퓨터에 저장된 정보를 원격저장소에 전달을 한다.
+- 저장된 commit을 이용해 내 컴퓨터에 저장된 정보를 원격저장소에 전달을 한다.
+  - 마지막 commit의 내용을 바탕으로 파일이 업로드된다.
+  - 그 외의 commit 중 원격저장소에 없는 것은 정보만 전달하여 기록을 확인할 수 있다.
 
