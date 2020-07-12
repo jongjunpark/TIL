@@ -98,7 +98,8 @@ git commit -am "commit message"
 git commit --amend
 
 4. 대화식모드
-// git add -p와 마찬가지로 커밋하는 변경사항을 
+// git add -p와 마찬가지로 커밋하는 변경사항을 보여준다.
+// 
 git commit -v
 ```
 
