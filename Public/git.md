@@ -34,29 +34,40 @@
 ## Option
 
 ```bash
+!. 파일상태확인
+# add를 통해 관리하는 파일의 상태를 확인할 수 있다.
+git status
+
 0. 모든파일
-git add .	// 현재 디렉토리의 모든 파일 대상
-git add -A	// 현재 디렉토리의 모든 파일 대상
-git add *	// 현재 디렉토리의 모든 파일 대상(.으로 시작하는 파일 제외 ex>.gitignore)
-git add -u	// 현재 디렉토리의 모든 파일 중 수정/삭제된 파일 대상
+git add .	# 현재 디렉토리의 모든 파일 대상
+git add -A	# 현재 디렉토리의 모든 파일 대상
+git add *	# 현재 디렉토리의 모든 파일 대상(.으로 시작하는 파일 제외 ex>.gitignore)
+git add -u	# 현재 디렉토리의 모든 파일 중 수정/삭제된 파일 대상
 
 1. 파일단위
 git add <file>
-> git add test.py	// 파일이름 직접 지정
-> git add *.py		// 확장자 지정
+> git add test.py	# 파일이름 직접 지정
+> git add *.py		# 확장자 지정
 
 2. 폴더단위
 git add <directory>
-> git add ./01_python/	// 폴더이름 직접 지정
+> git add ./01_python/	# 폴더이름 직접 지정
 
 3. 파일+폴더
 git add <directory><file>
 > git add Documentation/\*.txt
 
 4. 대화식모드
-// 수정파일 대상으로, 수정된 부분을 git에서 hunk 단위로 나누어준다. 
-// 각 hunk를 통해 변경사항을 보여주고 hunk를 기준으로 add 여부를 체크한다.
+# 수정파일 대상으로, 수정된 부분을 git에서 hunk 단위로 나누어준다. 
+# 각 hunk를 통해 변경사항을 보여주고 hunk를 기준으로 add 여부를 체크한다.
 git add -p
+
+5. forced add
+# ignore에 등록되어있지만 강제로 add하고 싶을 때,
+# 혹은 status에서 파일이 인식되지 않을 때,
+git add -f(--force) <directory><file>
+> git add -f test.py
+> git add -force mydoc/test2.py
 ```
 
 ![image-20200712212629114](git.assets/image-20200712212629114.png)
@@ -98,8 +109,8 @@ git commit -am "commit message"
 git commit --amend
 
 4. 대화식모드
-// git add -p와 마찬가지로 커밋하는 변경사항을 보여준다.
-// 
+# git add -p와 마찬가지로 커밋하는 변경사항을 보여준다.
+# 에디터에서 '#'으로 주석처리되지 않은 내용이 커밋메세지가 되고 :wq를 통해 에디터에서 나오면 커밋이 완료된다.
 git commit -v
 ```
 
@@ -117,4 +128,45 @@ git commit -v
 - 저장된 commit을 이용해 내 컴퓨터에 저장된 정보를 원격저장소에 전달을 한다.
   - 마지막 commit의 내용을 바탕으로 파일이 업로드된다.
   - 그 외의 commit 중 원격저장소에 없는 것은 정보만 전달하여 기록을 확인할 수 있다.
+
+## Option
+
+```bash
+1. 기본
+git push <remote> [branch]
+> git push origin master
+
+2. remote & branch 저장
+git push -u <remote> [branch]
+> git push -u origin master
+(after that)
+> git push
+
+3. 모든 branch push
+# remote에 있는 모든 branch에 push를 진행한다.
+git push --all <remote>
+> git push --all origin
+
+4. forced push
+# 원격저장소 내의 해당 branch에 존재하는 이력을
+# 내 로컬저장소의 이력으로 덮어쓴다.
+git push -f(--force) <remote> [branch]
+> git push -f origin master
+> git push --force origin master
+
+# forced push의 안전한 버전
+# 다른 누군가가 해당 branch에 push를 하지 않은 상태에서만 forced push를 실행한다.
+git push --force-with-lease <remote> [branch]
+
+5. 저장소 복제
+# 다음 순서를 따라야한다.
+git clone --mirror 기존주소.git
+git remote set-url --push origin 복제할주소.git
+git push --mirror
+> git clone --mirror https://github.com/original.git
+> git remote set-url --push origin https://gitgub.com/newspace.git
+> git push --mirror
+```
+
+
 
