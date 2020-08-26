@@ -465,9 +465,9 @@ p:first-child {
 
 
 
-### `:nth-child`
+### `:nth-child`, `:nth-last-child`
 
-> 모든 자식(child) 요소 중에서 앞에서부터 n번째에 위치하는 자식(child) 요소를 모두 선택함
+> 모든 자식(child) 요소 중에서 앞에서부터/뒤에서부터 n번째에 위치하는 자식(child) 요소를 모두 선택함
 
 - 주의할 점 : nth-child는 1부터 시작함, nth-child(0)은 아무 것도 나타내지 않는다.
 - 하지만 함수형 표기법인 n은 0부터 시작한다.
@@ -490,3 +490,208 @@ p:first-child {
 - **:nth-child(n+8):nth-child(-n+15)** : 형제 그룹 내에서 8번째부터 15번째 까지의 요소를 나타냄
 - **:nth-child(-n+3)** : 3,2,1번째 요소를 나타냄 즉, 앞에서 세 개의 요소를 나타낸다.
 
+**HTML**
+
+```html
+<h3><code>span:nth-child(2n+1)</code>, WITHOUT an
+   <code>&lt;em&gt;</code> among the child elements.</h3>
+<p>Children 1, 3, 5, and 7 are selected.</p>
+<div class="first">
+  <span>Span 1!</span>
+  <span>Span 2</span>
+  <span>Span 3!</span>
+  <span>Span 4</span>
+  <span>Span 5!</span>
+  <span>Span 6</span>
+  <span>Span 7!</span>
+</div>
+
+<br>
+
+<h3><code>span:nth-child(2n+1)</code>, WITH an
+   <code>&lt;em&gt;</code> among the child elements.</h3>
+<p>Children 1, 5, and 7 are selected.<br>
+   3 is used in the counting because it is a child, but it isn't
+   selected because it isn't a <code>&lt;span&gt;</code>.</p>
+<div class="second">
+  <span>Span!</span>
+  <span>Span</span>
+  <em>This is an `em`.</em>
+  <span>Span</span>
+  <span>Span!</span>
+  <span>Span</span>
+  <span>Span!</span>
+  <span>Span</span>
+</div>
+
+<br>
+
+<h3><code>span:nth-of-type(2n+1)</code>, WITH an
+   <code>&lt;em&gt;</code> among the child elements.</h3>
+<p>Children 1, 4, 6, and 8 are selected.<br>
+   3 isn't used in the counting or selected because it is an <code>&lt;em&gt;</code>, 
+   not a <code>&lt;span&gt;</code>, and <code>nth-of-type</code> only selects
+   children of that type. The <code>&lt;em&gt;</code> is completely skipped
+   over and ignored.</p>
+<div class="third">
+  <span>Span!</span>
+  <span>Span</span>
+  <em>This is an `em`.</em>
+  <span>Span!</span>
+  <span>Span</span>
+  <span>Span!</span>
+  <span>Span</span>
+  <span>Span!</span>
+</div>
+```
+
+**CSS**
+
+```css
+html {
+  font-family: sans-serif;
+}
+
+span,
+div em {
+  padding: 5px;
+  border: 1px solid green;
+  display: inline-block;
+  margin-bottom: 3px;
+}
+
+.first span:nth-child(2n+1),
+.second span:nth-child(2n+1),
+.third span:nth-of-type(2n+1) {
+  background-color: lime;
+}
+```
+
+**Result**
+
+![image-20200826141505546](Pseudo-Class.assets/image-20200826141505546.png)
+
+### `:fist-of-type`
+
+> 형제 요소 중 자신의 유형과 일치하는 제일 첫 요소를 나타냄
+
+**HTML**
+
+```html
+<article>
+  <div>This `div` is first!</div>
+  <div>This <span>nested `span` is first</span>!</div>
+  <div>This <em>nested `em` is first</em>, but this <em>nested `em` is last</em>!</div>
+  <div>This <span>nested `span` gets styled</span>!</div>
+  <b>This `b` qualifies!</b>
+  <div>This is the final `div`.</div>
+</article>
+```
+
+**CSS**
+
+```css
+article :first-of-type {
+  background-color: pink;
+}
+```
+
+**Result**
+
+![image-20200826142309729](Pseudo-Class.assets/image-20200826142309729.png)
+
+### `:nth-last-of-type`
+
+> 모든 자식(child) 요소 중에서 뒤에서부터 n번째로 등장하는 특정 요소를 모두 선택함
+
+**HTML**
+
+```html
+<div>
+  <div>This element isn't counted.</div>
+  <p>1st paragraph.</p>
+  <p>2nd paragraph.</p>
+  <div>This element isn't counted.</div>
+  <p>3rd paragraph.</p>
+  <p class="fancy">4th paragraph.</p>
+</div>
+```
+
+**CSS**
+
+```css
+/* Odd paragraphs */
+p:nth-of-type(2n+1) {
+  color: red;
+}
+
+/* Even paragraphs */
+p:nth-of-type(2n) {
+  color: blue;
+}
+
+/* First paragraph */
+p:nth-of-type(1) {
+  font-weight: bold;
+}
+
+/* This has no effect, as the .fancy class is only on the 4th p element, not the 1st */
+p.fancy:nth-of-type(1) {
+  text-decoration: underline;
+}
+```
+
+**Result**
+
+![image-20200826142425919](Pseudo-Class.assets/image-20200826142425919.png)
+
+
+
+## 기타 의사 클래스
+
+### `:not(선택자)`
+
+> 모든 선택자와 함께 사용할 수 있으며, 해당 선택자를 반대로 적용함
+
+**HTML**
+
+```html
+<p>Some text.</p>
+<p class="classy">Some other text.</p>
+<span>One more text<span>
+```
+
+**CSS**
+
+```css
+p:not(.classy) { color: red; }
+body :not(p) { color: green; }
+```
+
+**Result**
+
+![image-20200826142757884](Pseudo-Class.assets/image-20200826142757884.png)
+
+### `:lang(언어)`
+
+> 특정 요소를 언어 설정에 따라 다르게 표현할 때에 사용함
+
+**HTML**
+
+```html
+<div lang="en"><q>This English quote has a <q>nested</q> quote inside.</q></div>
+<div lang="fr"><q>This French quote has a <q>nested</q> quote inside.</q></div>
+<div lang="de"><q>This German quote has a <q>nested</q> quote inside.</q></div>
+```
+
+**CSS**
+
+```css
+:lang(en) > q { quotes: '\201C' '\201D' '\2018' '\2019'; }
+:lang(fr) > q { quotes: '« ' ' »'; }
+:lang(de) > q { quotes: '»' '«' '\2039' '\203A'; }
+```
+
+**Result**
+
+![image-20200826143451479](Pseudo-Class.assets/image-20200826143451479.png)
