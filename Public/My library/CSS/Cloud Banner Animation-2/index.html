@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cloud Banner - 2</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="banner">
+    <h2 id="text">Travel</h2>
+    <div class="clouds">
+      <img src="images/cloud1.png" style="--i:1;" alt="">
+      <img src="images/cloud2.png" style="--i:2;" alt="">
+      <img src="images/cloud3.png" style="--i:3;" alt="">
+      <img src="images/cloud4.png" style="--i:4;" alt="">
+      <img src="images/cloud5.png" style="--i:5;" alt="">
+      <img src="images/cloud1.png" style="--i:10;" alt="">
+      <img src="images/cloud2.png" style="--i:9;" alt="">
+      <img src="images/cloud3.png" style="--i:8;" alt="">
+      <img src="images/cloud4.png" style="--i:7;" alt="">
+      <img src="images/cloud5.png" style="--i:6;" alt="">
+    </div>
+  </div>
+  <section>
+    <h2>Cloud Banner 2</h2>
+    <p>국가원로자문회의의 조직·직무범위 기타 필요한 사항은 법률로 정한다. 일반사면을 명하려면 국회의 동의를 얻어야 한다. 사법권은 법관으로 구성된 법원에 속한다. 사회적 특수계급의 제도는 인정되지 아니하며, 어떠한
+      형태로도 이를 창설할 수 없다. 비상계엄이 선포된 때에는 법률이 정하는 바에 의하여 영장제도, 언론·출판·집회·결사의 자유, 정부나 법원의 권한에 관하여 특별한 조치를 할 수 있다. 국회는 의원의 자격을
+      심사하며, 의원을 징계할 수 있다. 체포·구속·압수 또는 수색을 할 때에는 적법한 절차에 따라 검사의 신청에 의하여 법관이 발부한 영장을 제시하여야 한다. 다만, 현행범인인 경우와 장기 3년 이상의 형에 해당하는
+      죄를 범하고 도피 또는 증거인멸의 염려가 있을 때에는 사후에 영장을 청구할 수 있다.
+      <br>
+      국무회의는 대통령·국무총리와 15인 이상 30인 이하의 국무위원으로 구성한다. 국가안전보장회의는 대통령이 주재한다. 환경권의 내용과 행사에 관하여는 법률로 정한다. 대한민국은 국제평화의 유지에 노력하고 침략적
+      전쟁을 부인한다. 대한민국의 국민이 되는 요건은 법률로 정한다. 모든 국민의 재산권은 보장된다. 그 내용과 한계는 법률로 정한다. 정부는 예산에 변경을 가할 필요가 있을 때에는 추가경정예산안을 편성하여 국회에
+      제출할 수 있다. 모든 국민은 통신의 비밀을 침해받지 아니한다. 제1항의 지시를 받은 당해 행정기관은 이에 응하여야 한다. 감사원의 조직·직무범위·감사위원의 자격·감사대상공무원의 범위 기타 필요한 사항은 법률로
+      정한다.</p>
+  </section>
+  <script>
+    let text = document.getElementById('text');
+    window.addEventListener('scroll', function(){
+      let value = window.scrollY;
+      text.style.marginBottom = value * 2 + 'px';
+    })
+  </script>
+</body>
+</html>
