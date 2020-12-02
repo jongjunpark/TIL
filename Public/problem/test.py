@@ -1,29 +1,16 @@
-def solution(N, stages):
-    answer = [0] * N
-    stage_num = [0]* (N+1)
-    stage_not_clear = [0] * (N+1)
-    for i in stages:
-        stage_not_clear[i-1] += 1
-        for j in range(i):
-            stage_num[j] += 1
-    fail_rate = []
-    for k in range(N):
-        tmp = stage_not_clear[k]/stage_num[k]
-        fail_rate.append(tmp)
-    for x in range(N):
-        cnt = 0
-        for y in range(N):
-            if x<y:
-                cnt += 1
-        i = 0
-        while True:
-            if answer[cnt+i] == 0:
-                answer[cnt+i] = (x+1)
-                break
-            else:
-                i += 1
-    return answer
+import sys
 
-N = 5
-stages = [2, 1, 2, 6, 2, 4, 3, 3]
-solution(N, stages)
+sys.stdin = open("input.txt", "r")
+
+
+T = int(input())
+
+for tc in range(1, T + 1):
+    N = int(input())
+    arr = [list(map(int, input().split())) for _ in range(N)]
+    dist = [[0]*(N) for _ in range(N)]
+    start_point = []
+    for i in range(N):
+        for j in range(N):
+            if arr[i][j] > 1:
+                start_point.append((i,j))
