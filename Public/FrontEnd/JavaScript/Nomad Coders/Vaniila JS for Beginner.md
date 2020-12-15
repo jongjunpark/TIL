@@ -444,6 +444,161 @@ function sayHello(argument) {
 
 
 
+## 호이스팅
+
+- 호이스팅은 끌어올림이다.
+
+- 함수 안에 있는 선언들을 모두 끌어올림 이 때 변수는 `var`만 해당
+
+- 선언에는 변수와 함수의 선언 두가지 종류가 있다.
+
+  ```javascript
+  function getX() {
+    console.log(x); // undefined
+    var x = 100;
+    console.log(x); // 100
+  }
+  getX();
+  
+  //------- 내부 호이스팅의 결과 --------
+  function getX() {
+    var x;
+    console.log(x);
+    x = 100;
+    console.log(x);
+  }
+  getX();
+  ```
+
+  - x가 선언되지 않았지만 undefined로 출력이 가능했던 이유는 사실 내부에서 Parser가 `var`선언을 호이스팅 했기 때문이다.
+
+    
+
+  ```javascript
+  foo();
+  foo2();
+  
+  function foo() { // 함수선언문
+      console.log("hello");
+  }
+  var foo2 = function() { // 함수표현식
+      console.log("hello2");
+  }
+  
+  //------- 내부 호이스팅의 결과 --------
+  var foo2; // [Hoisting] 함수표현식의 변수값 "선언"
+  
+  function foo() { // [Hoisting] 함수선언문
+      console.log("hello");
+  }
+  
+  foo();
+  foo2(); // ERROR!! 
+  
+  foo2 = function() { 
+      console.log("hello2");
+  }
+  ```
+
+
+
+## Closure
+
+- 두 개의 함수로 만들어진 환경
+- 내부 함수가 외부 함수의 반환값으로 사용된다.
+- 정보의 은닉을 위해 함수안에서 변수를 사용하고 싶을 때 사용하면 유용하다.
+  - closure를 사용하지 않으면 매번 함수를 호출할 때 마다 값이 초기화되지만
+  - closure를 사용하면 return값에 변수를 가지고 있다.
+
+
+
+## this
+
+- `this`는 무조건 어떤 Object를 지칭한다.
+- 다양한 상황에 따라 `this`가 지칭하는 것은 달라진다.
+
+#### 객체의 매소드안의 This
+
+```javascript
+object1: {
+    arr: [0,1,2]
+    method1() {
+        this.arr.forEach( 	// 이 때의 this는 method1 안의 this로 object1을 가르킴
+        	function(number){
+                console.log(this)
+                // 이 때의 this는 method안에 있는 this가 아니므로 window를 가르킴
+            }
+        )
+    }
+}
+```
+
+- 객체의 매소드안의 `this`는 객체를 가르키는 것을 확인할 수 있다.
+
+
+
+#### 함수를 호출할 때
+
+- 함수 호출 시 `this`는 전역객체에 바인딩 된다.
+- 또한 객체에 존재하는 매소드안의 함수에서의 `this`도 window를 가르킨다. 이를 해결하기 위해 `bind`를 사용한다.
+  - `bind(this)`는 한 scope 위의 `this`를 지칭해준다.
+  - 더 나아가서 `bind`의 불편함을 해결하기 위해 **화살표 함수**가 등장했다.
+
+```javascript
+object1: {
+    arr: [0,1,2]
+    method1() {
+            this.arr.forEach(function(number){
+                console.log(this) // this = object1
+            }.bind(this) // bind(this)는 한 scope위의 this를 지칭해준다.
+    	) 
+    }
+}
+
+// bind가 불편해서 나온게 화살표함수다!!
+object1: {
+    arr: [0,1,2]
+    method1() {
+        this.arr.forEach(function(number) => {
+        	console.log(this) // this = object1
+        }) 
+    }
+}
+```
+
+
+
+#### 생성자 함수를 통해 객체를 생성할 때
+
+
+
+## Promise
+
+> 약속, 성공한 경우와 실패한 경우만 생각하자는 약속
+
+- 콜백지옥에서 벗어나기 위해, 비동기 작업들을 순차적으로 혹은 병렬적으로 처리하여 컨트롤이 수월해진다.
+- 코드의 가시성이 높아지고 오류처리에도 도움이 된다.
+
+- 성공했을 때, 어떤 일을 한다. `.then(function)`
+- 실패했을 때, 어떤 일을 한다. `.catch(function)`
+
+
+
+### Async/Await
+
+- 비동기 코드의 겉모습과 동작을 좀 더 동기 코드와 유사하게 만들어준다.
+- `await` 키워드는 오직 `async` 로 정의된 함수의 내부에서만 사용될 수 있다.
+- `await`은 promise의 값이 사용가능할 때까지 메소드의 실행을 일시중지시킨다.
+
+
+
+### Arrow Function
+
+- 기존의 function 표현방식보다 간결하게 함수를 표현할 수 있다. 
+- 상위 스코프 this를 위해 사용하는 `bind`를 대체할 수 있다.
+
+
+
 ## 참고
 
 ### 도움되는 사이트
