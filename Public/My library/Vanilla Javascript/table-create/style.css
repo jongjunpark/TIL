@@ -1,0 +1,13 @@
+table td {
+    padding: 25px;
+    border: 5px solid red;
+    cursor: pointer;
+}
+
+table {
+    margin: auto;
+}
+
+table td:hover {
+    background-color: dodgerblue;
+}
